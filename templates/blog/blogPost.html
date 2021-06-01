@@ -1,0 +1,46 @@
+
+{% extends 'base.html'%}
+{% block title %}BlogPost{% endblock title %}
+
+
+{% block body %}
+<div class="row">
+  <div class="col-sm-3 text-center list-group pad-30">
+    <div style="border: 2px solid black;">
+        <div style="color:white;padding-bottom:2%;padding-top:2%;background:black;">
+            LATEST POST
+        </div>
+    {% for post in Posts %}
+    {{post.media}}
+          <div class="list-group">
+          <a href="/blog/{{post.slug}}" class="list-group-item list-group-item-action btn btn-dark" style="text-align: center;">{{post.title|safe}}</a>
+          </div>
+     {% endfor %}
+    </div>
+  </div>
+
+
+<div class="col-sm-6 text-center rounded" style="border: 2px solid black;background:white;margin-top:30px;margin-bottom:30px;">
+        <article class="blog-post"style="margin:10px;margin: left 25%;margin: right 25%;">
+            <h2 class="blog-post-title text-center">{{blogposts.title}}</h2>
+            <p class="blog-post-meta text-center">{{blogposts.Created_date}} by <a href="#">{{blogposts.author}}</a></p>
+
+            <p>{{blogposts.content|safe}}</p>
+            
+          </article>
+</div>
+<div class="col-sm-3 text-center list-group pad-30">
+  <div style="border: 2px solid gray;">
+  <div style="color:black;padding-bottom:2%;padding-top:2%;background:gray;">
+      Random Posts
+  </div>
+  {% for rand in post_ids %}
+  {{post.media}}
+  <div class="list-group">
+   <a href="/blog/{{post.slug}}" class="list-group-item list-group-item-action" style="text-align: center;">{{rand.title|safe}}</a>
+  </div>
+   {% endfor %}
+  </div>
+</div>
+</div>
+{% endblock body %}

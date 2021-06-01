@@ -1,0 +1,315 @@
+{% url 'home' as home %}
+{% url 'home' as home %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+  name="description"           
+  content="Extreme Sopken English Class">
+  {% load static %}
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'home/style.css' %}">
+
+  <title>{% block title %} {% endblock title %}</title>
+  <script>
+
+
+    window.onload = function () {
+
+      document.getElementById('loader').style.display = "none";
+      document.getElementById('loaders').style.display = "block";
+    };
+
+  </script>
+</head>
+
+
+<body>
+  <div id="loader"><img src="{% static 'home/black_sphere_processing.gif' %}"></div>
+  <div id="loaders" style="background: #F1F1F1 !important;">
+    <!-----------------------------------------Navbar------------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center border-warning">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">&nbsp;&nbsp;Extreme</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link {% block home %}{% endblock home %}" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle {% block course %}{% endblock course %}" href="#" id="navbarDropdown"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Course
+              </a>
+              <ul class="dropdown-menu text-center bg-dark " aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item nav-link bg-dark" href="/course1">Basic English</a></li>
+                <li><a class="dropdown-item nav-link bg-dark" href="/course2">Advanced English</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle {% block batch %}{% endblock batch %}" href="#" id="navbarDropdown"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Batch
+              </a>
+              <ul class="dropdown-menu text-center bg-dark" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item nav-link bg-dark" href="/batch">Batch 1: <br>8:00AM - 9:00AM </a></li>
+                <li><a class="dropdown-item nav-link bg-dark" href="/batch">Batch 2: <br>9:00AM - 10:00AM </a></li>
+                <li><a class="dropdown-item nav-link bg-dark" href="/batch">Batch 3: <br>6:00PM - 7:00PM </a></li>
+                <li><a class="dropdown-item nav-link bg-dark" href="/batch">Batch 4: <br>7:00PM - 8:00PM </a></li>
+
+              </ul>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link {% block office %}{% endblock office %}" aria-current="page" href="/office">Our
+                Office</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link {% block blog %}{% endblock blog %}" aria-current="page" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block about %}{% endblock about %}" href="/about">
+                About Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block contact %}{% endblock contact %}" href="/contact">Contact Us</a>
+            </li>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop">
+              Enquire Now
+            </button>
+
+            <!-- Modal -->
+            <div class="modal  fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="margin-top: 70px;">
+              <div class="modal-dialog bg-dark nav-link">
+                <div class="modal-content bg-dark nav-link">
+                  <div class="modal-header bg-dark nav-link">
+                    <h5 class="modal-title bg-dark nav-link" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close fa fa-times nav-link" data-bs-dismiss="modal"
+                      aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body bg-dark nav-link">
+                    <form method="post" class="form-floating mb-3 bg-dark nav-link">
+                      {% csrf_token %}
+                      <div class="form-floating mb-3 bg-dark nav-link">
+                        <input type="name" class="form-control bg-dark nav-link" id="name" name="name">
+                        <label for="floatingInput">Name</label>
+                      </div>
+                      <div class="form-floating mb-3 bg-dark nav-link">
+                        <input type="email" class="form-control bg-dark nav-link" id="email" name="email">
+                        <label for="floatingInput">Email Address</label>
+                      </div>
+                      <div class="form-floating mb-3 bg-dark nav-link">
+                        <input type="Phone" class="form-control bg-dark nav-link" id="phone" name="phone">
+                        <label for="floatingInput bg-dark nav-link">Phone Number</label>
+                      </div>
+                      <div class="form-floating bg-dark nav-link">
+                        <textarea class="form-control bg-dark nav-link" name="content" id="content"
+                          style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Comments</label>
+                      </div>
+                      <div class="modal-footer ">
+
+                        <div class="col-12 ">
+                          <button class="btn btn-outline-warning" type="submit">Submit form</button>
+                        </div>
+                      </div>
+
+
+                    </form>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <li>&nbsp;&nbsp;&nbsp;</li>
+
+            <a class=" nav-link fa fa-phone" href="tel:8983382986">&nbsp;&nbsp;8983382986</a>
+            <li>&nbsp;&nbsp;</li>
+            <form method="GET" action="/search" class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+              <button class="btn btn-outline-warning" type="submit">Search</button>
+            </form>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong></strong>{{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    <!-----------------------------------------Navbar------------------------------------->
+
+
+    <!-----------------------------------------Body--------------------------------------->
+
+    {% block body %}Home {% endblock body %}
+
+
+    <!-----------------------------------------Body--------------------------------------->
+    <!-----------------------------------------Footer--------------------------------------->
+
+
+
+    <footer id="footer" class="footer-1">
+      <div class="main-footer widgets-dark typo-light">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="widget subscribe no-box">
+                <h5 class="widget-title">Extreme Spoken English<span></span></h5>
+                <p>About the company, little description will goes here.. </p>
+              </div>
+            </div>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="widget no-box">
+                <h5 class="widget-title">Quick Links<span></span></h5>
+                <ul class="thumbnail-widget">
+                  <li>
+                    <div class="thumb-content"><a href="/">&nbsp;Home</a></div>
+                  </li>
+                  <li>
+                    <div class="thumb-content"><a href="/course1">&nbsp;Basic English Course</a></div>
+                  </li>
+                  <li>
+                    <div class="thumb-content"><a href="/course2">&nbsp;Advanced English Course</a></div>
+                  </li>
+                  <li>
+                    <div class="thumb-content"><a href="/office">&nbsp;Our Offices</a></div>
+                  </li>
+                  <li>
+                    <div class="thumb-content"><a href="/blog">&nbsp;Blog</a></div>
+                  </li>
+                  <li>
+                    <div class="thumb-content"><a href="about">&nbsp;About Us</a></div>
+                  </li>
+                  <li>
+                    <div class="thumb-content"><a href="/contact">&nbsp;Contact Us</a></div>
+                  </li>
+                  <li>
+                </ul>
+              </div>
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="widget no-box">
+                <h5 class="widget-title">Follow up<span></span></h5>
+                <a href="https://www.facebook.com/profile.php?id=100008477674215" class="fa fa-facebook nav-link"></a>
+                <a href="https://www.linkedin.com/in/pravin-dhanad-b95b3411b/" class="fa fa-twitter nav-link"
+                  style="color: white;"></a>
+                <a href="https://www.linkedin.com/in/pravin-dhanad-b95b3411b/" class="fa fa-youtube nav-link"
+                  style="color: red;"> </a>
+                <a href="https://www.instagram.com/pravin_dhanad_patil/" class="fa fa-instagram nav-link"
+                  style="color:brown;"> </a>
+                <a href="https://www.linkedin.com/in/pravin-dhanad-b95b3411b/s" class="fa fa-linkedin nav-link"
+                  style="color:lightblue;"> </a>
+              </div>
+              <div class="widget no-box">
+                <h5 class="widget-title">Working Hours<span></span></h5>
+                <h6>Monday-Saturday</h6>
+                <h6>8:00AM To 8:00PM</h6>
+              </div>
+            </div>
+            <br>
+            <br>
+
+
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="widget no-box">
+                <h5 class="widget-title">Contact Us<span></span></h5>
+                <div class="mapouter">
+                  <div class="gmap_canvas"><iframe width="250" height="200" id="gmap_canvas"
+                      src="https://maps.google.com/maps?q=%20423601,%20Opp.%20S.%20T.%20Stand,%20Shivalay,%202nd%20Floor,%20Kopargaon,%20Ahmed%20Nagar,%20Kopargaon,%20Maharashtra%20423601&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                      frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><br>
+                    <style>
+                      .mapouter {
+                        position: relative;
+                        text-align: right;
+                        height: 200px;
+                        width: 250px;
+                      }
+                    </style>
+                    <style>
+                      .gmap_canvas {
+                        overflow: hidden;
+                        background: none !important;
+                        height: 200px;
+                        width: 250px;
+                      }
+                    </style>
+                  </div>
+                </div>
+                <p> 423601, Opp. S. T. Stand, Shivalay, 2nd Floor, Kopargaon, Ahmed Nagar, Maharashtra 423601</p>
+                <div class="emailfield">
+
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-copyright">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <p>Copyright Extreme Spoken English Classes © 2021. All rights reserved.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </footer>
+  </div>
+
+  <!----------------------xxx-------------------Footer---------------xxxxxx------------------------>
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

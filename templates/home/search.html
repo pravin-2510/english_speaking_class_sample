@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% block title %}Search Results{% endblock title %}
+{% block blog %}active{% endblock blog %}
+
+
+{% block body %}
+{% if Posts|length == 0 %}
+<p class="text-center">Your search - {{query}}  <br>&nbsp;
+&nbsp;&nbsp;&nbsp;- did not match any documents.</p>
+
+{% endif %}
+{% for post in Posts %}
+<div class="container my3" style="margin-top: 30px;">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Article By {{post.author}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.Created_date}}</div>
+            <p class="card-text mb-auto">{{post.content | truncatechars:500|safe}}</p>
+            <a href="/blog/{{post.slug}}" class="stretched-link">Continue reading</a>
+        </div>
+
+    </div>
+</div>
+{% endfor %}
+
+{% endblock body %}
